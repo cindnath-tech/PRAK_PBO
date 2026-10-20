@@ -7,16 +7,16 @@ public class Laptop {
     private boolean tersedia;
 
     private static boolean ramValid(int ram) {
-        return ram == 4 || ram == 8 || ram == 16 || ram == 32;
+        return ram == 4 || ram == 8 || ram == 16 || ram == 32; //memeriksa apakah kapasistas RAM valid
     }
 
     public Laptop(String kodeAset, String merk, int ramGB) {
         if (kodeAset == null || !kodeAset.startsWith("LP-")) {
-            throw new IllegalArgumentException("Kode aset tidak valid");
+            throw new IllegalArgumentException("Kode aset tidak valid"); //pengecekan kode aset (jik LP maka valid)
         }
 
         if (merk == null || merk.isBlank()) {
-            throw new IllegalArgumentException("Merk tidak valid");
+            throw new IllegalArgumentException("Merk tidak valid"); // jika merk kosong maka tidak valid
         }
 
         if (!ramValid(ramGB)) {
@@ -64,7 +64,7 @@ public class Laptop {
     public void upgradeRam(int ramBaru) {
         if (!ramValid(ramBaru) || ramBaru <= ramGB) {
             throw new IllegalArgumentException("RAM upgrade tidak valid");
-        }
+        } // memeriksa apakah rambaru valid dan rambaru harus lebih besar dari ramGB 
         ramGB = ramBaru;
     }
 
